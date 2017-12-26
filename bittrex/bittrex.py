@@ -5,6 +5,7 @@
 import time
 import hmac
 import hashlib
+from decimal import Decimal
 
 try:
     from urllib import urlencode
@@ -73,7 +74,7 @@ def using_requests(request_url, apisign):
     return requests.get(
         request_url,
         headers={"apisign": apisign}
-    ).json()
+    ).json(parse_float=Decimal)
 
 
 class Bittrex(object):
